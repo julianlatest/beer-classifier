@@ -1,0 +1,7 @@
+sudo
+git
+wget
+curl
+ca-certificates
+unzip
+nano

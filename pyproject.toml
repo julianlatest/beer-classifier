@@ -1,0 +1,33 @@
+[tool.ruff]
+target-version = "py311"
+extend-exclude = ["notebooks"]
+
+[tool.ruff.lint]
+# On top of the default `select` (`E`, `F`), 
+# enable 
+# - flake8-bugbear (`B`)
+# - flake8-bandit (S)
+# - isort (I)
+# - pep8-naming (N)
+select = ["E", "F", "B", "S", "I", "N"]
+
+
+[tool.ruff.lint.per-file-ignores]
+"**/tests/**/test_*.py" = [
+    "S101", # asserts allowed in tests
+]
+"**/*.ipynb" = [
+    "B018", # allow notebooks printing out variables in the mid cell with variable names only
+]
+
+[tool.pytest.ini_options]
+pythonpath = "src"
+addopts = "--import-mode=importlib"
+
+[tool.coverage.run]
+omit = [
+    # ignore all notebooks
+    "*/notebooks/*",
+    # ignore all tests
+    "*/tests/*",
+]

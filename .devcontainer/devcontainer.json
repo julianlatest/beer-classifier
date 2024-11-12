@@ -1,0 +1,111 @@
+{
+    "name": "ML devcontainer",
+    "build": {
+        "context": "..",
+        "dockerfile": "Dockerfile"
+    },
+    "shutdownAction": "none",
+    "features": {
+        // https://github.com/devcontainers/features/tree/main/src/common-utils
+        "ghcr.io/devcontainers/features/common-utils:2": {
+            "installZsh": true,
+            "configureZshAsDefaultShell": true,
+            "installOhMyZsh": true,
+            "installOhMyZshConfig": true,
+            "upgradePackages": false,
+            "username": "vscode"
+        }
+    },
+    "runArgs": [
+        // Enables GPU usage inside the container
+        "--gpus=all",
+        // Speeds up PyTorch data loading
+        "--ipc=host"
+    ],
+    "containerEnv": {
+        "PYTHONPATH": "/workspaces/ml-dev-template/src",
+        "PYTHON_VERSION": "3.11",
+        "PYTHONIOENCODING": "UTF-8",
+        "LANG": "C.UTF-8",
+        "LC_ALL": "C.UTF-8",
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "PYTHONUNBUFFERED": "1",
+        "DEBIAN_FRONTEND": "noninteractive",
+        "CONDA_AUTO_UPDATE_CONDA": "false"
+    },
+    "remoteEnv": {
+        "PATH": "/opt/conda/bin:${containerEnv:PATH}",
+        "LD_LIBRARY_PATH": "${containerEnv:LD_LIBRARY_PATH}:/usr/local/lib:/opt/conda/lib"
+    },
+    "postCreateCommand": "sudo chown -R vscode:vscode /workspaces && pre-commit install --overwrite",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                // Docker
+                "ms-azuretools.vscode-docker",
+
+                // Git
+                "eamodio.gitlens",
+                "donjayamanne.githistory",
+                "codezombiech.gitignore",
+
+                // Other languages
+                "DavidAnson.vscode-markdownlint",
+                "redhat.vscode-yaml",
+
+                // Python
+                "ms-python.python",
+                "ms-python.vscode-pylance",
+                "charliermarsh.ruff",
+                "ms-python.mypy-type-checker",
+                "donjayamanne.python-environment-manager",
+                "donjayamanne.vscode-default-python-kernel",
+                "njpwerner.autodocstring",
+
+                // Jupyter
+                "ms-toolsai.jupyter",
+                "ms-toolsai.vscode-jupyter-cell-tags",
+                "ms-toolsai.jupyter-renderers",
+                "ms-toolsai.vscode-jupyter-slideshow",
+
+                // Utils
+                "Gruntfuggly.todo-tree",
+                "christian-kohler.path-intellisense",
+                "mechatroner.rainbow-csv",
+                "ms-vsliveshare.vsliveshare",
+                "streetsidesoftware.code-spell-checker",
+                "timonwong.shellcheck",
+                "grapecity.gc-excelviewer",
+                "mutantdino.resourcemonitor"
+                // "marchiore.csvtomarkdown",
+
+                // Code assistant
+                // "GitHub.copilot",
+                // "github.copilot-chat",
+
+                // Azure
+                // "ms-azure-devops.azure-pipelines",
+            ],
+            "settings": {
+                "autoDocstring.docstringFormat": "google",
+                "mypy-type-checker.importStrategy": "fromEnvironment",
+                "python.testing.pytestEnabled": true,
+                "python.defaultInterpreterPath": "/usr/local/bin/python",
+                "[python]": {
+                    "editor.codeActionsOnSave": {
+                        "source.fixAll": "explicit",
+                        "source.organizeImports": "explicit"
+                    },
+                    "editor.defaultFormatter": "charliermarsh.ruff",
+                    "editor.formatOnSave": true,
+                    "files.trimTrailingWhitespace": true
+                },
+                "notebook.formatOnSave.enabled": true,
+                "notebook.codeActionsOnSave": {
+                    "notebook.source.fixAll": "explicit",
+                    "notebook.source.organizeImports": "explicit"
+                }
+            }
+        }
+    }
+}
