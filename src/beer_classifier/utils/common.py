@@ -38,7 +38,7 @@ def read_yaml(path_to_yaml: Path) -> ConfigBox:
 
 
 @ensure_annotations
-def create_directories(path_to_directories: list, verbose=True):
+def create_directories(path_to_directories: list, verbose=True) -> type(None):
     """create list of directories
 
     Args:
@@ -52,7 +52,7 @@ def create_directories(path_to_directories: list, verbose=True):
 
 
 @ensure_annotations
-def save_json(path: Path, data: dict):
+def save_json(path: Path, data: dict) -> type(None):
     """save json data
 
     Args:
@@ -83,7 +83,7 @@ def load_json(path: Path) -> ConfigBox:
 
 
 @ensure_annotations
-def save_bin(data: Any, path: Path):
+def save_bin(data: Any, path: Path) -> type(None):
     """save binary file
 
     Args:
