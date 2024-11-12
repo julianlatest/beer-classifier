@@ -1,5 +1,8 @@
+from beer_classifier import logger
+
+
 def main():
-    print("Hello World!")
+    logger.info("Custom logging test")
 
 
 if __name__ == "__main__":
