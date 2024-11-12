@@ -1,3 +1,34 @@
+[project]
+name = "beer-classifier"
+version = "0.0.0a1"
+dependencies = []
+requires-python = ">=3.11"
+authors = [
+    {name = "Julian L.", email = "julianlatest@users.noreply.github.com"}
+]
+maintainers = [
+    {name = "Julian L.", email = "julianlatest@users.noreply.github.com"}
+]
+description = "Project to demonstrate usage of my ml-dev-template."
+readme = "README.md"
+license = {file = "LICENSE"}
+keywords = ["beer", "classifier", "machine learning"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Science/Research",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3.11"
+]
+
+[project.urls]
+Homepage = "https://github.com/julianlatest/beer-classifier"
+Documentation = "https://github.com/julianlatest/beer-classifier"
+Repository = "https://github.com/julianlatest/beer-classifier.git"
+Issues = "https://github.com/julianlatest/beer-classifier/issues"
+Changelog = "https://github.com/julianlatest/beer-classifier"
+
+
 [tool.ruff]
 target-version = "py311"
 extend-exclude = ["notebooks"]

@@ -37,5 +37,5 @@ RUN pip install --no-cache-dir -r requirements.txt && sudo rm requirements.txt
 
 # Install project requirements
 # TODO: loop over projects in src folder
-COPY src/pytorch_project/requirements.txt .
+COPY src/beer_classifier/requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt && sudo rm requirements.txt

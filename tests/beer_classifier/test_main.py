@@ -1,4 +1,4 @@
-from pytorch_project import main
+from beer_classifier import main
 
 
 def test_main():
